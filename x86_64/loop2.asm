@@ -1,5 +1,8 @@
 ; computers only understand how to display text characters. You must convert the numerical value into its ASCII text representation by repeatedly dividing it by 10 and printing the remainders
 
+; add dl, '0' is plain addition, and the “conversion” works because of how the ASCII table is laid out.
+; '0' is just the number 48. NASM lets you write a character in quotes, and it replaces it with that character’s ASCII code. These three lines assemble to exactly the same machine code
+
 global _start
 
 section .data

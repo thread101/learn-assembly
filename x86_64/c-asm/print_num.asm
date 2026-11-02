@@ -22,17 +22,6 @@
 
 ; That’s why a function must leave the stack exactly as it found it before ret. If it doesn’t, ret pops the wrong value and jumps to nonsense.
 
-; How Parameters and Return Values Work
-; Because assembly has no function signature arguments, data must be placed where both the caller and callee can see it. Depending on the CPU architecture, this is done in one of two ways:
-
-; Option A: Passing by Registers (Fast)
-; Modern architectures like x86-64 or ARM pass the first few parameters directly inside specific general-purpose registers.
-; • x86-64 Standard: Arguments 1 through 6 are placed in RDI, RSI, RDX, RCX, R8, and R9 respectively. The return value is stored in RAX.
-; • ARM Standard: Arguments 1 through 4 go in R0 through R3. The return value is placed back into R0
-
-; Option B: Passing via Stack (Legacy/Overflow)
-; Older architectures (like 32-bit x86) or functions with too many parameters push arguments onto the stack right before calling the function. The function then uses positive offsets relative to the Base Pointer (EBP) to read them.
-
 section .bss
 buffer: resb 20
 
