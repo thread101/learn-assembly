@@ -60,7 +60,7 @@ print_num:
   mov rdi, buf
   add rdi, 20
   mov rsi, 10
-  .next_digit
+  .next_digit:
     xor rdx, rdx
     div rsi
     add dl, '0'
