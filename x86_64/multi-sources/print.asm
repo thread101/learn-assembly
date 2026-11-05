@@ -1,10 +1,11 @@
 
+global print
+global println
+
 section .data
 newline: db 10
 
 section .text
-global print
-global println
 
 ; (rdi: str, rsi: len)
 print:

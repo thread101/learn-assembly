@@ -1,4 +1,8 @@
 
+global _start
+extern print
+extern println
+
 section .data
 msg: db "Hello my name is Andre, what about yours?"
 msgl: equ $ - msg
@@ -10,10 +14,6 @@ msg2: db "100 meters"
 msg2l: equ $ - msg2
 
 section .text
-  extern print
-  extern println
-  global _start
-
 _start:
   mov rdi, msg
   mov rsi, msgl
