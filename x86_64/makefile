@@ -6,7 +6,10 @@ OBJECTS := $(SOURCES:.asm=.o)
 # Maps binaries directly to the build folder (e.g., build/main)
 BINARIES := $(patsubst %.asm,build/%,$(SOURCES))
 
-all: $(BINARIES)
+SUBDIR := multi-sources
+SUB_OBJ := msources
+
+all: $(BINARIES) $(SUB_OBJ)
 
 # Ensure the build directory is always created silently
 build:
@@ -20,8 +23,12 @@ build/%.o: %.asm | build
 build/%: build/%.o
 	ld -o $@ $<
 
+$(SUB_OBJ):
+	$(MAKE) -C $(SUBDIR)
+
 clean:
 	rm -rf build
+	$(MAKE) -C $(SUBDIR) clean
 
 .PHONY: all clean
 
